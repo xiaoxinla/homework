@@ -1,3 +1,5 @@
+{% extends 'dbpro/base.html'%}
+{% block content%}
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'dbpro/style.css' %}"/>
 {% if shop_list %}
@@ -9,3 +11,4 @@
 {% else %}
     <p>No shops are found.</p>
 {% endif %}
+{% endblock%}
