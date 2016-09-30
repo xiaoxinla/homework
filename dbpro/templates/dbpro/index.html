@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'dbpro/style.css' %}"/>
+{% if shop_list %}
+    <ul>
+    {% for shop in shop_list %}
+    <li><a href="{% url 'dbpro:shop' shop.id %}">{{shop.name}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No shops are found.</p>
+{% endif %}

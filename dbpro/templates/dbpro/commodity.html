@@ -1,0 +1,10 @@
+<h1>{{ commodity.name }}</h>
+<h2>{{ commodity.price }}</h>
+<h2>{{ commodity.desc }}</h>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p> {% endif %}
+<form action="{% url 'dbpro:cart' commodity.id %}" method="post">
+{% csrf_token %}
+
+<input type="text" name="num" value="1"/>
+<input type="submit" value="Submit"/>
+</form>

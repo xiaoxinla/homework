@@ -1,0 +1,6 @@
+<h1> {{ shop.name }} </h1>
+<ul>
+{% for commodity in shop.commodity_set.all %}
+<li><a href="{% url 'dbpro:commodity' commodity.id %}">{{ commodity.name }}</a></li>
+{% endfor %}
+</ul>
