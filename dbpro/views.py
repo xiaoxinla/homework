@@ -8,30 +8,30 @@ from .models import *
 
 
 class IndexView(generic.ListView):
-    template_name = 'dbpro/index.html'
+    template_name = 'dbpro/index_detail.html'
     queryset = Shop.objects.all()
 
 
 class ShopView(generic.DetailView):
     model = Shop
-    template_name = 'dbpro/shop.html'
+    template_name = 'dbpro/shop_detail.html'
 
 
 class UserView(generic.DetailView):
     model = User
-    template_name = 'dbpro/user.html'
+    template_name = 'dbpro/user_detail.html'
 
 
 class CommodityView(generic.DetailView):
     model = Commodity
-    template_name = 'dbpro/commodity.html'
+    template_name = 'dbpro/commodity_detail.html'
 
 
 class CartView(generic.DetailView):
     model = Cart
-    template_name = 'dbpro/cart.html'
+    template_name = 'dbpro/cart_detail.html'
 
 
 class OrderView(generic.DetailView):
     model = Order
-    template_name = 'dbpro/order.html'
+    template_name = 'dbpro/order_detail.html'
