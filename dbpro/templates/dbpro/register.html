@@ -1,0 +1,12 @@
+{% extends "dbpro/base.html"%}
+{% block title %}Register{% endblock%}
+{% block content%}
+<h1>Register</h1>
+<form method = 'post' enctype="multipart/form-data">
+{% csrf_token %} 
+{{uf.as_p}}
+{{errors}}
+</br>
+<input type="submit" value = "ok" />
+</form>
+{% endblock%}

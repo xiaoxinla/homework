@@ -1,7 +1,5 @@
 {% extends 'dbpro/base.html'%}
 {% block content%}
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'dbpro/style.css' %}"/>
 {% if shop_list %}
     <ul>
     {% for shop in shop_list %}

@@ -12,8 +12,8 @@ class Shop(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length = 50)
+    password = models.CharField(max_length = 50)
     phone = models.CharField(max_length = 20)
-    desc = models.CharField(max_length = 200)
     createtime = models.DateTimeField(auto_now_add=True)
 
 class Commodity(models.Model):
