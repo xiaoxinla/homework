@@ -1,0 +1,7 @@
+{% extends 'dbpro/base.html'%}
+{% block content %}
+<h1>Cart</h1>
+{% for cart in user.cart_set.all %}
+<li>{{cart.id}}</li>
+{% endfor %}
+{% endblock%}

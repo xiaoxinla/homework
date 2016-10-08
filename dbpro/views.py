@@ -28,9 +28,18 @@ class CommodityView(generic.DetailView):
     template_name = 'dbpro/commodity_detail.html'
 
 
-class CartView(generic.DetailView):
-    model = Cart
-    template_name = 'dbpro/cart_detail.html'
+def addCart(request):
+    user_id = request.session['user_id']
+    user = get_object_or_404(User, pk=user_id)
+    commodity_id = request.POST['commodity_id']
+    commodity = get_object_or_404(Commodity, pk=commodity_id)
+    cart = Cart.objects.get(user=user, commodity=commodity)
+    if(cart is None):
+        cart = Cart(user=user, commodity=commodity)
+    else:
+        cart.num = cart.num+1
+    cart.save()
+    return render(request, 'dbpro/cart.html', {'user':user})
 
 
 class OrderView(generic.DetailView):
@@ -62,3 +71,19 @@ def register(request):
         uf = UserForm()
     return render(request, 'dbpro/register.html',{'uf':uf})
 
+
+def login(request):
+    if(request.method == "POST"):
+        uf = UserLoginForm(request.POST)
+        if(uf.is_valid()):
+            name = uf.cleaned_data['name']
+            password = uf.cleaned_data['password']
+            userResult = User.objects.get(name=name,password=password)
+            if(userResult):
+                request.session['user_id'] = userResult.id
+                return render(request, 'dbpro/success.html',{'operation':'Login'})
+            else:
+                return HttpResponse("User not exist")
+    else:
+        uf = UserLoginForm()
+    return render(request, 'dbpro/userlogin.html',{'uf':uf})

@@ -1,5 +1,7 @@
-{% extends 'dbpro/base.html'%}
-{% block content%}
+{% extends 'dbpro/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Home</h1>
 {% if shop_list %}
     <ul>
     {% for shop in shop_list %}
@@ -9,4 +11,4 @@
 {% else %}
     <p>No shops are found.</p>
 {% endif %}
-{% endblock%}
+{% endblock %}

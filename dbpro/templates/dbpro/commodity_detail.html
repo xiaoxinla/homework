@@ -1,10 +1,14 @@
-<h1>{{ commodity.name }}</h>
-<h2>{{ commodity.price }}</h>
-<h2>{{ commodity.desc }}</h>
+{% extends 'dbpro/base.html'%}
+{% block content%}
+<h1>{{ commodity.name }}</h1>
+<li>Price:  {{ commodity.price }}</li>
+<li>SoldNum:  {{ commodity.totalbuy }} </li>
+<li>Description:  {{ commodity.desc }}</li>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p> {% endif %}
-<form action="{% url 'dbpro:cart' commodity.id %}" method="post">
+<form action="{% url 'dbpro:cart' %}" method="post">
 {% csrf_token %}
-
+<input type="hidden" name="commodity_id" value="{{commodity.id}}"/>
 <input type="text" name="num" value="1"/>
 <input type="submit" value="Submit"/>
 </form>
+{% endblock%}
